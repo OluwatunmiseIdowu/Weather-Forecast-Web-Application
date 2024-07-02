@@ -2,63 +2,7 @@
 <html>
 <head>
   <title>Weather Forecast</title>
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      background-color: #FFCDD2; /* light pink */
-      margin: 0;
-      padding: 0;
-    }
-
-    .container {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      height: 100vh;
-    }
-
-    .weather-card {
-      background-color: #E91E63; 
-      color: white;
-      padding: 20px;
-      border-radius: 10px;
-      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-      text-align: left;
-    }
-
-    h1 {
-      margin-top: 0;
-      font-size: 28px;
-    }
-
-    p {
-      font-size: 18px;
-      margin: 10px 0;
-    }
-
-    input {
-      padding: 10px;
-      border: none;
-      border-radius: 5px;
-      font-size: 16px;
-      margin-bottom: 10px;
-    }
-
-    button {
-      background-color: #673AB7; 
-      color: white;
-      padding: 10px 20px;
-      border: none;
-      border-radius: 5px;
-      font-size: 16px;
-      cursor: pointer;
-    }
-
-    button:hover {
-      background-color: #512DA8; 
-    }
-  </style>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
   <div class="container">
@@ -71,31 +15,8 @@
     </div>
   </div>
 
-  <script>
-    function fetchWeather() {
-      const cityInput = document.getElementById('city-input');
-      const cityName = cityInput.value;
-      const apiKey = '2af0ade375df1f5427afa7025a54aa1a';
-
-      fetch(`https://api.openweathermap.org/data/2.5/weather?q=${cityName}&units=imperial&APPID=${apiKey}`)
-        .then(response => response.json())
-        .then(data => {
-          if (data.cod === '404') {
-            document.getElementById('weather-info').textContent = 'No city found';
-            document.getElementById('temperature-info').textContent = '';
-          } else {
-            const weather = data.weather[0].main;
-            const temperature = Math.round(data.main.temp);
-            document.getElementById('weather-info').textContent = `The weather in ${cityName} is: ${weather}`;
-            document.getElementById('temperature-info').textContent = `The temperature in ${cityName} is: ${temperature}°F`;
-          }
-        })
-        .catch(error => {
-          console.error('Error:', error);
-          document.getElementById('weather-info').textContent = 'An error occurred while fetching the weather data.';
-          document.getElementById('temperature-info').textContent = '';
-        });
-    }
-  </script>
+  <script src="script.js"></script>
 </body>
 </html>
+    
+         
